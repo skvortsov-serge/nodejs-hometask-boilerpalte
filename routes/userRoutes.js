@@ -51,7 +51,7 @@ router.get('/:id', (req, res, next) => {
   }
 }, responseMiddleware);
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', updateUserValid, (req, res, next) => {
   try {
     const id = req.params.id;
     const data = UserService.update(id, req.body);

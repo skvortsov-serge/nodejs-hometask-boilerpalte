@@ -17,7 +17,7 @@ class Fight extends React.Component {
     async componentDidMount() {
         const fighters = await getFighters();
         if(fighters && !fighters.error) {
-            this.setState({ fighters });
+            this.setState({ fighters: fighters.data });
         }
     }
 
@@ -30,7 +30,7 @@ class Fight extends React.Component {
     }
 
     onFighter1Select = (fighter1) => {
-        this.setState({fighter1 });
+        this.setState({ fighter1 });
     }
 
     onFighter2Select = (fighter2) => {
