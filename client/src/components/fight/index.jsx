@@ -17,7 +17,7 @@ class Fight extends React.Component {
     async componentDidMount() {
         const fighters = await getFighters();
         if(fighters && !fighters.error) {
-            this.setState({ fighters });
+            this.setState({ fighters: fighters.data });
         }
     }
 
@@ -30,7 +30,7 @@ class Fight extends React.Component {
     }
 
     onFighter1Select = (fighter1) => {
-        this.setState({fighter1 });
+        this.setState({ fighter1 });
     }
 
     onFighter2Select = (fighter2) => {
@@ -61,11 +61,25 @@ class Fight extends React.Component {
             <div id="wrapper">
                 <NewFighter onCreated={this.onCreate} />
                 <div id="figh-wrapper">
-                    <Fighter selectedFighter={fighter1} onFighterSelect={this.onFighter1Select} fightersList={this.getFighter1List() || []} />
+                    <Fighter
+                      selectedFighter={fighter1}
+                      onFighterSelect={this.onFighter1Select}
+                      fightersList={this.getFighter1List() || []}
+                    />
                     <div className="btn-wrapper">
-                        <Button onClick={this.onFightStart} variant="contained" color="primary">Start Fight</Button>
+                        <Button
+                          onClick={this.onFightStart}
+                          variant="contained"
+                          color="primary"
+                        >
+                          Start Fight
+                        </Button>
                     </div>
-                    <Fighter selectedFighter={fighter2} onFighterSelect={this.onFighter2Select} fightersList={this.getFighter2List() || []} />
+                    <Fighter
+                      selectedFighter={fighter2}
+                      onFighterSelect={this.onFighter2Select}
+                      fightersList={this.getFighter2List() || []}
+                    />
                 </div>
             </div>
         );

@@ -8,6 +8,12 @@ class AuthService {
         }
         return user;
     }
+
+    checkCredentials(data, user) {
+        const { password, email } = data;
+
+        return (user.password === password && user.email === email);
+    }
 }
 
 module.exports = new AuthService();
